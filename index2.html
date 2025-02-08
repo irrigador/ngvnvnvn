@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Web</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+        }
+
+        nav {
+            display: flex;
+            margin-left: auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            background-color: #eee;
+            box-sizing: border-box;
+            text-align: left;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #312;
+        }
+
+        div {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content-active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" data-tab="#tab-content1" class="tab">Movel</a>
+        <a href="#" data-tab="#tab-content2" class="tab">Fixa</a>
+    </nav>
+
+    <div>
+        <div id="tab-content1" class="tab-content tab-content-active">
+            <!-- Conteúdo da página 1 -->
+            <h1>Bem-vindo à Minha Página (Movel)</h1>
+            <p>Este é um exemplo simples de uma página web para Movel.</p>
+        </div>
+
+        <div id="tab-content2" class="tab-content">
+            <!-- Conteúdo da página 2 -->
+            <h1>Bem-vindo à Minha Página (Fixa)</h1>
+            <p>Este é um exemplo simples de uma página web para Fixa.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab'),
+                  tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = document.querySelector(tab.dataset.tab);
+
+                    tabContents.forEach(tc => {
+                        tc.classList.remove('tab-content-active');
+                    });
+                    target.classList.add('tab-content-active');
+
+                    tabs.forEach(t => {
+                        t.classList.remove('tab-active');
+                    });
+                    tab.classList.add('tab-active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
